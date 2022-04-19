@@ -1,0 +1,66 @@
+base_images:
+  coreos-centos-stream8:
+    name: stream8
+    namespace: coreos
+    tag: "8"
+  dev-scripts:
+    name: test
+    namespace: ocp-kni
+    tag: dev-scripts
+  openshift_release_golang-1.18:
+    name: release
+    namespace: openshift
+    tag: golang-1.18
+build_root:
+  project_image:
+    dockerfile_path: images/os/Dockerfile.crio-test
+images:
+- dockerfile_path: images/os/Dockerfile.crio-test
+  from: coreos-centos-stream8
+  inputs:
+    openshift_release_golang-1.18:
+      as:
+      - registry.ci.openshift.org/openshift/release:golang-1.18
+  to: crio-crio-agent
+- dockerfile_literal: |
+    FROM base
+    COPY . .
+  from: src
+  to: crio-crio-agent-src
+releases:
+  initial:
+    integration:
+      name: "4.10"
+      namespace: ocp
+  latest:
+    integration:
+      include_built_images: true
+      name: "4.10"
+      namespace: ocp
+resources:
+  '*':
+    requests:
+      cpu: 100m
+      memory: 200Mi
+test_binary_build_commands: "echo \"asdf\" \n"
+tests:
+- as: example
+  steps:
+    cluster_profile: equinix-ocp-metal
+    workflow: crio-test-agent
+- as: e2e
+  steps:
+    cluster_profile: equinix-ocp-metal
+    workflow: crio-test-e2e
+- as: integration
+  steps:
+    cluster_profile: equinix-ocp-metal
+    workflow: crio-test-integration
+- as: critest
+  steps:
+    cluster_profile: equinix-ocp-metal
+    workflow: crio-test-critest
+zz_generated_metadata:
+  branch: ci-v2
+  org: cri-o
+  repo: cri-o
