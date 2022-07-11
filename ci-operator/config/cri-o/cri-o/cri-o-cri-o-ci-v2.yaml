@@ -21,12 +21,12 @@ images:
     openshift_release_golang-1.18:
       as:
       - registry.ci.openshift.org/openshift/release:golang-1.18
-  to: crio-crio-agent
+  to: crio-crio-base
 - dockerfile_literal: |
     FROM base
     COPY . .
   from: src
-  to: crio-crio-agent-src
+  to: crio-crio-base-src
 releases:
   initial:
     integration:
