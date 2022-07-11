@@ -26,7 +26,7 @@ images:
     FROM base
     COPY . .
   from: src
-  to: crio-crio-agent-src
+  to: crio-crio-base-src
 releases:
   initial:
     integration:
