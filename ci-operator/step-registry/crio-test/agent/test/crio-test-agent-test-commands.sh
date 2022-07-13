@@ -33,6 +33,6 @@ timeout --kill-after 10m 120m ssh "${SSHOPTS[@]}" "root@${IP}" bash - << EOF
     # copy the agent sources on the remote machine
     tar -xzvf crio-test.tar.gz -C "\${REPO_DIR}"
     chown -R root:root "\${REPO_DIR}"
-    cd "\${REPO_DIR}/contrib/test/integration"
+    cd "\${REPO_DIR}/contrib/test/ci"
     echo "localhost" >> hosts
 EOF
