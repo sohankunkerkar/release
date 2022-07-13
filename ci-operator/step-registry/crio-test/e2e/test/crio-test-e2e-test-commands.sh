@@ -41,4 +41,5 @@ timeout --kill-after 10m 120m ssh "${SSHOPTS[@]}" "root@${IP}" bash - << EOF
     cd "\${REPO_DIR}/contrib/test/ci"
     echo "localhost" >> hosts
     ansible-playbook e2e-main.yml -i hosts -e "TEST_AGENT=prow" -e "GOPATH=/usr/local/go" --connection=local -vvv 
+    sleep 600
 EOF
