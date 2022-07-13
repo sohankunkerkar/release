@@ -36,3 +36,12 @@ timeout --kill-after 10m 120m ssh "${SSHOPTS[@]}" "root@${IP}" bash - << EOF
     cd "\${REPO_DIR}/contrib/test/ci"
     echo "localhost" >> hosts
 EOF
+
+function getlogs() {
+  echo "### Downloading logs..."
+  scp -r "${SSHOPTS[@]}" "root@${IP}:/tmp/artifacts/*" "${ARTIFACT_DIR}"
+}
+
+# Gather logs regardless of what happens after this
+trap getlogs EXIT
+

@@ -37,3 +37,12 @@ timeout --kill-after 10m 120m ssh "${SSHOPTS[@]}" "root@${IP}" bash - << EOF
     echo "localhost" >> hosts
     ansible-playbook critest-main.yml -i hosts -e "TEST_AGENT=prow" -e "GOPATH=/usr/local/go" --connection=local -vvv 
 EOF
+
+function getlogs() {
+  echo "### Downloading logs..."
+  scp -r "${SSHOPTS[@]}" "root@${IP}:/tmp/artifacts/*" "${ARTIFACT_DIR}"
+}
+
+# Gather logs regardless of what happens after this
+trap getlogs EXIT
+
