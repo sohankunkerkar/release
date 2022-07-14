@@ -13,9 +13,9 @@ base_images:
     tag: golang-1.18
 build_root:
   project_image:
-    dockerfile_path: images/os/Dockerfile.crio-test-agent
+    dockerfile_path: images/os/Dockerfile
 images:
-- dockerfile_path: images/os/Dockerfile.crio-test-agent
+- dockerfile_path: images/os/Dockerfile
   from: coreos-centos-stream8
   inputs:
     openshift_release_golang-1.18:
