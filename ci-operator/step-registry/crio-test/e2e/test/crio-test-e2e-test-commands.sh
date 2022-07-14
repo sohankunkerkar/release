@@ -21,6 +21,7 @@ timeout --kill-after 10m 120m ssh "${SSHOPTS[@]}" "root@${IP}" bash - << EOF
     cat /etc/environment 
     mkdir /tmp/artifacts
     mkdir /tmp/artifacts/logs
+    mkdir /logs
     mkdir /logs/artifacts
 
     dnf install python39 -y

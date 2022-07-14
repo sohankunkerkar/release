@@ -15,8 +15,9 @@ timeout --kill-after 10m 120m ssh "${SSHOPTS[@]}" "root@${IP}" bash - << EOF
     echo GOROOT="/usr/local/go" >> /etc/environment
     cat /etc/environment 
     mkdir /tmp/artifacts 
+    mkdir /logs
     mkdir /logs/artifacts 
-    mkdir /logs/artifacts/logs
+    mkdir /tmp/artifacts/logs
 
     dnf install python39 -y
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
