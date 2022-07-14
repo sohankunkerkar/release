@@ -16,6 +16,7 @@ timeout --kill-after 10m 120m ssh "${SSHOPTS[@]}" "root@${IP}" bash - << EOF
     cat /etc/environment 
     mkdir /tmp/artifacts
     mkdir /logs/artifacts 
+    mkdir /logs/artifacts/logs
 
     dnf install python39 -y
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
@@ -38,7 +39,7 @@ timeout --kill-after 10m 120m ssh "${SSHOPTS[@]}" "root@${IP}" bash - << EOF
     cd "\${REPO_DIR}/contrib/test/ci"
     echo "localhost" >> hosts
     ansible-playbook integration-main.yml -i hosts -e "TEST_AGENT=prow" -e "GOPATH=/usr/local/go" --connection=local -vvv 
-    cp -r /logs/artifacts/* /tmp/artifacts
+    cp -r /logs/artifacts /tmp/artifacts/logs
     cp -r /tmp/artifacts/* "${ARTIFACT_DIR}"
 EOF
 

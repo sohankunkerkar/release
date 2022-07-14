@@ -20,6 +20,7 @@ timeout --kill-after 10m 120m ssh "${SSHOPTS[@]}" "root@${IP}" bash - << EOF
     echo GOROOT="/usr/local/go" >> /etc/environment
     cat /etc/environment 
     mkdir /tmp/artifacts
+    mkdir /tmp/artifacts/logs
     mkdir /logs/artifacts
 
     dnf install python39 -y
@@ -43,7 +44,7 @@ timeout --kill-after 10m 120m ssh "${SSHOPTS[@]}" "root@${IP}" bash - << EOF
     cd "\${REPO_DIR}/contrib/test/ci"
     echo "localhost" >> hosts
     ansible-playbook e2e-main.yml -i hosts -e "TEST_AGENT=prow" -e "GOPATH=/usr/local/go" --connection=local -vvv
-    cp -r /logs/artifacts/* /tmp/artifacts/
+    cp -r /logs/artifacts /tmp/artifacts/logs
     cp -r /tmp/artifacts/* "${ARTIFACT_DIR}"
 EOF
 
