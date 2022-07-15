@@ -61,7 +61,7 @@ tests:
     cluster_profile: equinix-ocp-metal
     workflow: crio-test-critest
 zz_generated_metadata:
-  branch: main
+  branch: ci-v2
   org: cri-o
   repo: cri-o
   variant: ci
