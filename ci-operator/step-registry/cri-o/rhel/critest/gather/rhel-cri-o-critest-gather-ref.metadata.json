@@ -1,5 +1,5 @@
 {
-	"path": "cri-o/e2e/test/cri-o-e2e-test-ref.yaml",
+	"path": "cri-o/rhel/critest/gather/cri-o-critest-gather-ref.yaml",
 	"owners": {
 		"approvers": [
 			"wgahnagl",

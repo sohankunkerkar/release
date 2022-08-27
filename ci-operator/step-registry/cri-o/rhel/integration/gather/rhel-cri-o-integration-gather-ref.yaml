@@ -1,8 +1,8 @@
 ref:
-  as: cri-o-critest-test
+  as: rhel-cri-o-integration-gather
   from: crio-crio-base-src
   grace_period: 10m
-  commands: cri-o-critest-test-commands.sh
+  commands: rhel-cri-o-integration-gather-commands.sh
   resources:
     requests:
       cpu: "3"

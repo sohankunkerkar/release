@@ -43,18 +43,50 @@ resources:
       memory: 200Mi
 test_binary_build_commands: "echo \"no test commands\" \n"
 tests:
-- as: e2e
+- as: rhel-e2e
   steps:
     cluster_profile: gcp
-    workflow: cri-o-e2e
-- as: integration
+    workflow: rhel-cri-o-e2e
+- as: rhel-integration
   steps:
     cluster_profile: gcp
-    workflow: cri-o-integration
-- as: critest
+    workflow: rhel-cri-o-integration
+- as: rhel-critest
   steps:
     cluster_profile: gcp
-    workflow: cri-o-critest
+    workflow: rhel-cri-o-critest
+# - as: fedora-e2e
+#   steps:
+#     cluster_profile: gcp
+#     workflow: fedora-cri-o-e2e
+# - as: fedora-integration
+#   steps:
+#     cluster_profile: gcp
+#     workflow: fedora-cri-o-integration
+# - as: fedora-critest
+#   steps:
+#     cluster_profile: gcp
+#     workflow: fedora-cri-o-critest
+# - as: crun-e2e
+#   steps:
+#     cluster_profile: gcp
+#     workflow: crun-cri-o-e2e
+# - as: crun-integration
+#   steps:
+#     cluster_profile: gcp
+#     workflow: crun-cri-o-integration
+# - as: cgroupsv2-e2e
+#   steps:
+#     cluster_profile: gcp
+#     workflow: cri-o-e2e
+# - as: cgroupsv2-integration-crun
+#   steps:
+#     cluster_profile: gcp
+#     workflow: cgroupsv2-cri-o-integration
+# - as: cgroupsv2-e2e-crun
+#   steps:
+#     cluster_profile: gcp
+#     workflow: cgroupsv2-cri-o-e2e-crun
 zz_generated_metadata:
   branch: ci-v2
   org: cri-o

@@ -1,5 +1,5 @@
 {
-	"path": "cri-o/e2e/cri-o-e2e-workflow.yaml",
+	"path": "cri-o/rhel/integration/gather/cri-o-integration-gather-ref.yaml",
 	"owners": {
 		"approvers": [
 			"wgahnagl",

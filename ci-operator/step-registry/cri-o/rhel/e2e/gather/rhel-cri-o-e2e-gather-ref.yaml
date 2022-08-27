@@ -1,8 +1,8 @@
 ref:
-  as: cri-o-integration-gather
+  as: rhel-cri-o-e2e-gather
   from: crio-crio-base-src
   grace_period: 10m
-  commands: cri-o-integration-gather-commands.sh
+  commands: rhel-cri-o-e2e-gather-commands.sh
   resources:
     requests:
       cpu: "3"
