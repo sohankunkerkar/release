@@ -1,0 +1,18 @@
+ref:
+  as: kueue-operator-test-upgrade-ocp
+  from: cli
+  commands: kueue-operator-test-upgrade-ocp-commands.sh
+  timeout: 7800s
+  resources:
+    requests:
+      cpu: 200m
+      memory: 300Mi
+  dependencies:
+  - name: "release:latest"
+    env: OPENSHIFT_UPGRADE_RELEASE_IMAGE_OVERRIDE
+  documentation: |-
+    Triggers a minimal OCP cluster upgrade using oc adm upgrade
+    and waits for the ClusterVersion to report completion. Does not
+    run openshift-tests or any conformance/upgrade test suites --
+    only performs the raw cluster upgrade from the initial version
+    to the target version specified by OPENSHIFT_UPGRADE_RELEASE_IMAGE_OVERRIDE.

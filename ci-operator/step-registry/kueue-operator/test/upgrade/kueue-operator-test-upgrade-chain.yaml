@@ -1,0 +1,10 @@
+chain:
+  as: kueue-operator-test-upgrade
+  steps:
+  - ref: kueue-operator-test-upgrade-ocp
+  - ref: kueue-operator-test-upgrade-workload
+  documentation: |-
+    Performs a minimal OCP cluster upgrade and then verifies that
+    kueue operator still works correctly after the upgrade by running
+    a workload smoke test (creates a ClusterQueue, LocalQueue, submits
+    a Job, and verifies kueue admits and completes the workload).
